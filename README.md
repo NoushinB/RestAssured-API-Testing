@@ -112,6 +112,15 @@ The `RunCucumberTest` class, located in the `src/test/java` directory, is the en
 This class is critical for orchestrating the execution of Cucumber feature files and generating reports for test results.
 
 ---
+## Test Reports
 
+After running the tests, you can find the test execution reports in the `target` directory. The reports are generated in HTML format, providing a detailed overview of the test results.
 
+![Test Report ](https://github.com/NoushinB/RestAssured-API-Testing/blob/master/src/test/resources/documents/report.png) 
 
+---
+
+## Test Execution Demo
+    
+
+[![Watch the RestAssured-API-Testing DEMO](https://github.com/NoushinB/RestAssured-API-Testing/blob/master/src/test/resources/documents/RestAssured_Demo.png?raw=true)](https://youtu.be/FwECd4aUeco)
