@@ -1,7 +1,22 @@
-# Quote API Testing Framework
+# RestAssured-API-Testing
 
-This repository is a **BDD (Behavior-Driven Development)** testing framework created using **Cucumber** and **JUnit**. It tests the Quote API, which allows us representatives to create and manage quotes. The framework leverages **RestAssured** for HTTP requests, **Gson** for JSON handling, and follows best practices to ensure modularity and ease of maintenance.
+Welcome to the RestAssured-API-Testing project! This is a sample project designed to demonstrate **BDD (Behavior-Driven Development)** testing framework created using **Cucumber** and **JUnit**. It tests the functionality of an API that allows representatives to create and manage quotes. The framework leverages **RestAssured** for HTTP requests, **Gson** for JSON handling, and follows best practices to ensure modularity and ease of maintenance.
 
+## Features
+- **Cucumber Framework Integration**: Create behavior-driven test scenarios using Gherkin syntax.
+- **RestAssured Setup**: Seamlessly handle HTTP requests and responses.
+- **Java and JUnit**: Utilize Java for test automation and JUnit for executing tests.
+- **Modular Structure**: Organize your test code for ease of maintenance and scalability.
+
+## Prerequisites
+Before getting started with the Quote API Testing Framework, ensure you have the following prerequisites:
+
+- Java Development Kit (JDK)
+- Integrated Development Environment (IDE)
+- Maven for dependency management
+- Basic understanding of Cucumber and Gherkin syntax
+- Familiarity with RESTful API concepts
+  
 ## Setting Up the Project
 To set up the project, follow these steps:
  ### 1. Open the Project:
