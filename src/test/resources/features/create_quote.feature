@@ -7,11 +7,11 @@ Feature: Create a New Quote
     Given the quote api service is running
 
   @AC_1
-  Scenario Outline: : Successfully create a new quote with one item for a customer
+  Scenario Outline: Successfully create a new quote with one item for a customer
     Given a customer "<customer_name>"
     And one item "<item_name>" with the quantity <quantity>, the unitary price <price>, and a percentage of <discount>
     When I create a quote for that customer with that items
-    Then it returns the quote with the correct details, including the total line price calculated as <total_line_price>,
+    Then it returns the quote with the correct details, including the total line price calculated as <total_line_price>
     And a confirmation message "Quote created successfully."
     Examples:
       | customer_name | item_name | quantity | price | discount | total_line_price |
@@ -23,7 +23,7 @@ Feature: Create a New Quote
     Given a customer "<customer_name>"
     And one item "<item_name>" with the quantity <quantity>, the unitary price <price>, and a percentage of <discount>
     When I create a quote for that customer with that items
-    Then it returns the quote with the correct details, including the discount amount <discount_amount> and the total lineprice <total_line_price>
+    Then it returns the quote with the correct details, including the discount amount <discount_amount> and the total line price <total_line_price>
     And a confirmation message "Quote created successfully."
     Examples:
       | customer_name | item_name | quantity | price | discount | discount_amount | total_line_price |
@@ -38,7 +38,7 @@ Feature: Create a New Quote
     And one item "<item_B>" with the quantity <quantity_B>, the unitary price <price_B>, and a percentage of 0
     When I create a quote for that customer with that items
     Then the response status code is 200
-    Then it returns the quote with the correct details, including two lines and the total quote price calculated as <total_quote_price>
+    And it returns the quote with the correct details, including two lines and the total quote price calculated as <total_quote_price>
     And a confirmation message "Quote created successfully."
     Examples:
       | customer_name | item_A    | quantity_A | price_A | item_B    | quantity_B | price_B | total_quote_price |
@@ -80,6 +80,7 @@ Feature: Create a New Quote
     And one item "<item_name>" with the quantity <quantity>, the unitary price <price>, and a percentage of 0
     When I create a quote for that customer with that items
     Then the response status code is 400
+    And the error message "Quantity must be greater than zero"
     Examples:
       | customer_name | item_name | quantity | price |
       | Noushin       | Product B | -100     | 15.00 |
@@ -91,6 +92,7 @@ Feature: Create a New Quote
     And one item "<item_name>" with the quantity <quantity>, the unitary price <price>, and a percentage of 0
     When I create a quote for that customer with that items
     Then the response status code is 400
+    And the error message "Price must be greater than zero"  
     Examples:
       | customer_name | item_name | quantity | price  |
       | Noushin       | Product C | 2        | -10.00 |
@@ -102,6 +104,7 @@ Feature: Create a New Quote
     And one item "<item_name>" with the quantity <quantity>, the unitary price 0, and a percentage of 0
     When I create a quote for that customer with that items
     Then the response status code is 400
+    And the error message "Price must be greater than zero"
     Examples:
       | customer_name | item_name | quantity |
       | Noushin       | Product C | 2        |
@@ -109,11 +112,12 @@ Feature: Create a New Quote
 
 #Edge case
   @AC_9
-  Scenario Outline: Create a quote with discount exceeding 100%:
+  Scenario Outline: Create a quote with discount exceeding 100%
     Given a customer "<customer_name>"
     And one item "<item_name>" with the quantity <quantity>, the unitary price <price>, and a percentage of <discount>
     When I create a quote for that customer with that items
     Then the response status code is 400
+    And the error message "Discount cannot exceed 100%"
     Examples:
       | customer_name | item_name | quantity | price | discount |
       | Noushin       | Product B | 3        | 15.00 | 1.1      |
